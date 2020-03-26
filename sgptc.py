@@ -57,7 +57,7 @@ class particles(object):
     
     def evo_x(self):
         v = self.v.copy()
-        self.x += self.cd.dvdt_extra(self.x, v)
+        self.x += self.cd.dvdt_extra(self.x, v) * self.dt
         self.x += self.dt * v
         return
 
@@ -132,7 +132,7 @@ class coord(object):
         return aextra
     def dxdt_extra_cylindrical(self, x, v):
         vextra = zeros(v.shape)
-        vextra[:, 2] = v[:, 2] / x[:, 0] -v[:, 2]
+        vextra[:, 2] = (v[:, 2] / x[:, 0]) -v[:, 2]
         
         return 0
 

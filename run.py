@@ -85,7 +85,7 @@ def gb():
 
 def give_field_func():
     global testp
-    x = array([[1., 0., 0.]])
+    x = array([[1, 0., 0.]])
     fsp = list(x.shape)
     fsp.insert(0, 2)
     fields = zeros(fsp)
@@ -99,8 +99,8 @@ def give_field_func():
         exit()
     else:
         code = t2.get()
-        testp = particles(dt = 1e-2, x = x, fiefun = field_func, v = array([[0.1, 0.01, 0.0]]), m = 1, q = 1, coordname = t1.get())
-        plotm(func = testp.boris, color = (0,1,0), step = 50000)
+        testp = particles(dt = 1e-2, x = x, fiefun = field_func, v = array([[0.1, 0.0, 0.01]]), m = 1, q = 1, coordname = t1.get())
+        plotm(func = testp.rk4, color = (0,1,0), step = 10000)
         mlab.show()
         return
     
