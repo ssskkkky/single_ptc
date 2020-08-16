@@ -56,7 +56,7 @@ def plotm(func = None, step = 10000, color = (1,0,0)):
 def cb():
     global testp
     x = array([[1., 0., 0.]])
-    testp = particles(dt = 1e-2, x = x, fiefun = (lambda x: array([rollaxis(array([zeros(x.shape[0]), zeros(x.shape[0]), zeros(x.shape[0])]), 0, 2), rollaxis(array([zeros(x.shape[0]), zeros(x.shape[0]), ones(x.shape[0])]), 0, 2)])), v = array([[0.1, 0.0, 0.01]]), m = 1, q = 1, coordname = t1.get())
+    testp = particles(dt = 1e-1, x = x, fiefun = (lambda x: array([rollaxis(array([zeros(x.shape[0]), zeros(x.shape[0]), zeros(x.shape[0])]), 0, 2), rollaxis(array([zeros(x.shape[0]), zeros(x.shape[0]), ones(x.shape[0])]), 0, 2)])), v = array([[0.1, 0.0, 0.01]]), m = 1, q = 1, coordname = t1.get())
     plotm(func = testp.boris, color = (0,1,0))
     mlab.show()
 
@@ -99,8 +99,8 @@ def give_field_func():
         exit()
     else:
         code = t2.get()
-        testp = particles(dt = 1e-2, x = x, fiefun = field_func, v = array([[0.1, 0.0, 0.01]]), m = 1, q = 1, coordname = t1.get())
-        plotm(func = testp.rk4, color = (0,1,0), step = 10000)
+        testp = particles(dt = 1e-1, x = x, fiefun = field_func, v = array([[0.1, 0.01, 0.01]]), m = 1, q = 1, coordname = t1.get())
+        plotm(func = testp.boris, color = (0,1,0), step = 19900)
         mlab.show()
         return
     
@@ -121,7 +121,7 @@ e1.pack()
 
 
 t2 = tk.StringVar()
-t2.set('fields[0,:,0]=1;fields[1,:,2]=1')
+t2.set('fields[0,:,:]=0;fields[1,:,1]=1')
 e2 = tk.Entry(root, textvariable = t2, justify = 'center', bd = 5)
 e2.pack()
 
